@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Jquery examples</title>
+    <script src="../lib/jquery-3.6.0.min.js"></script>
+    <script src="./admin-notes-jquery.js"></script>
+    <link rel="stylesheet" href="./admin-notes-jquery.css" type="text/css"/>
+</head>
+</head>
+
+<body>
+
+
+    <h2>Jquery</h2>
+
+    <div class="container"> 
+       
+        <div id="display_notes" class="child-container">
+            <a href="#" class="add_note">Agregar nota +</a>
+            <table id="notes">
+                <tr id="table_title">
+                    <td>Id</th>
+                    <td>Title</th>
+                    <td>Content</th>
+                    <td>Actions</th>
+                </tr>
+                <tr id="table_content"></tr>
+             </table> 
+        </div> 
+        
+        <div id="create_notes" class="child-container">
+        <form>
+        <ul>
+            <li>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="note_title">
+            </li>
+            <li>
+            <label for="mail">Content:</label>
+            <input type="text" id="content" name="note_content">
+            </li>
+            <li class="button">
+            <button type="submit" id="create_button" name="create_button">Create note</button>
+            <button type="submit" id="update_button" name="update_button">Update note</button>
+            </li>
+        </ul>
+        </form>
+    
+        <div id="error_container">
+            <span id="title-error"></span>
+            <span id="content-error"></span>
+        </div>
+        </div>
+    
+        <div id="message"></div>
+
+    </div>
+    
+</body>
+
+</html>

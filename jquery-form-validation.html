@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Form validation</title>
+    <link rel="stylesheet" href="./jquery-form-validation.css" type="text/css"/>
+</head>
+<body>
+
+    
+<h2>Jquery</h2>
+
+<div id="demo">
+    <form>
+        <ul>
+         <li>
+           <label for="name">Name:</label>
+           <input type="text" id="name" name="user_name">
+         </li>
+         <li>
+           <label for="mail">E-mail:</label>
+           <input type="email" id="mail" name="user_email">
+         </li>
+         <li>
+           <label for="msg">Message:</label>
+           <textarea id="msg" name="user_message"></textarea>
+         </li>
+         <li class="button">
+            <button type="submit" id="send_button" name="send_button">Send your message</button>
+          </li>
+        </ul>
+       </form>
+
+       <div id="error_container">
+           <span id="name-error"></span>
+           <span id="email-error"></span>
+           <span id="msg-error"></span>
+       </div>
+</div>
+    <script src="./lib/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(() => {
+            $( "form" ).on( "submit", function( event ) {
+            event.preventDefault();
+            validateFrom();
+            }); 
+
+            
+            function validateFrom (){
+                $('form input, form textarea').each(function(index, elem){
+                    if($(elem).val().length == 0){
+                        console.log(index);
+                        if(index == 0){
+                            $('#name-error').html("Campo de name vacio");
+                        }
+                        if(index == 1){ 
+                            $('#email-error').html("Campo de email vacio");
+                        }
+                        if(index ==2){ 
+                            $('#msg-error').html("Campo de mensage vacio");
+                        }
+                    }else{
+                        console.log('Mensaje enviado');
+                    }
+                });
+
+               //Ejemplo linstructor 
+               
+                // errors= [];
+                // $('form input, form textarea').each(function(index, elem){
+                //     if(!$(this).val()){
+                //         addError(!$(this).attr("name"));
+                //     }  
+                // });
+
+               
+                //     $('#error_container').empty();
+                //     errors.forEach((errorText) => {
+                //   let newError = `<li>${errorText}</li>`;
+                //   $('#error_container').append(newError);  
+                // });
+
+                // if(errors.length == 0){
+                //     console.log('Mensaje enviado');
+                // }
+            }
+
+            // function addError(input){
+            //     errors.push(`Falta agregar el campo ${campo}`);
+            // }
+        }); 
+    </script>
+</body>
+</html>

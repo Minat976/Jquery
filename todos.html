@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Jquery examples</title>
+</head>
+
+<body>
+
+
+    <h2>Jquery</h2>
+
+    <div id="demo">
+        <table id="todos">
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </tr>
+         </table>   
+    </div>
+
+    <div id="content"></div>
+    <script src="./lib/jquery-3.6.0.min.js"></script>
+
+    <script>
+        let content = document.getElementById("content");
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/todos",
+                dataType: 'json',
+                type: 'GET',
+                success: function (result) {
+                    result.forEach(obj => {
+                        let row = `
+                            <tr>
+                            <th>${obj.userId}</th>
+                            <th>${obj.title}</th>
+                            <th>${obj.completed}</th>
+                            </tr>
+                        `;
+
+                        $('#todos').append(row);
+                        $('th:contains(true)').closest('tr').addClass('completed');
+                        $('th:contains(false)').closest('tr').addClass('not-completed');
+                    });
+                },
+                error: "Error"
+            });
+        });
+    </script>
+</body>
+
+</html>
